@@ -11,5 +11,4 @@ def connect_to_wifi(ssid, password):
     print('Connection successful')
     print('Network config:', station.ifconfig())
     
-connect_to_wifi( "Jack-Office", "h304@1723" )
-#connect_to_wifi( "Clear Sky", "0919570523" )
+connect_to_wifi( "Jack-Office", "" )

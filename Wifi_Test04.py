@@ -1,11 +1,7 @@
 import network
 import time
 
-wifi_stations = [ {"SSID": "Jack-Office", "PASSWD": "h3041723" },
-                  {"SSID": "Clear Sky", "PASSWD": "0919570523"},
-                  {"SSID": "TP-Link_Guest_4EF0", "PASSWD": "" },
-                  {"SSID": "TP-Link_IoT_2G", "PASSWD": "0919570523"},
-                  {"SSID": "TP-Link_IoT_5G", "PASSWD": ""}]
+wifi_stations = [  {"SSID": "TP-Link_IoT_5G", "PASSWD": ""}]
 wifi_status = False
 station = network.WLAN(network.STA_IF)
 station.active(False)

@@ -1,11 +1,9 @@
 import network
 import time
 
-#ssid = 'Jack-Office'
-#password = 'h304@1723'
 
 ssid = 'Clear Sky'
-password = '0919570523'
+password = ''
 
 station = network.WLAN(network.STA_IF)
 station.active(True)
