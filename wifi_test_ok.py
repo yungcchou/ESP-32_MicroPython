@@ -1,15 +1,14 @@
 import network, time, machine, ubinascii, dht
 from machine import Pin
 from umqtt.simple import MQTTClient
-#import paho.mqtt.client
 
-broker_addr = "xxx.xxx.xxx.xxx"
+broker_addr = "xxx.xxx.xxx.xx"
 broker_port = 1883
 mqtt_user = "esp32"
-mqtt_pw = "xxxxxx"
+mqtt_pw = "xxxxx"
 client_id = ubinascii.hexlify(machine.unique_id())
 
-wifi_stations = [ {"SSID": "Jack-Office", "PASSWD": "xxxxxxx" }]
+wifi_stations = [ {"SSID": "Jack-Office", "PASSWD": "xxxxxx" }]
 wifi_status = False
 station = network.WLAN(network.STA_IF)
 station.active(False)
@@ -44,7 +43,7 @@ def find_ssid(target_ssid, target_pw):
 
 onBoard_LED = Pin( 2, Pin.OUT )
 
-select_station = 2
+select_station = 0
 find_ssid(wifi_stations[select_station]["SSID"],
           wifi_stations[select_station]["PASSWD"])
 if wifi_status:
@@ -67,11 +66,8 @@ if wifi_status:
     
     
     sensor22 = dht.DHT22( Pin( 4 ))
-    
     sensor22.measure
 
-    #com = UART(1, 9600, tx=17, rx=16)
-    #com.init(9600)
     for i in range(10):
         sensor22.measure()
         temp22 = sensor22.temperature()
@@ -84,7 +80,9 @@ if wifi_status:
         mqtt_client.subscribe( topic )
         mqtt_client.publish( topic, output_str.encode())
         print( f'Connected to {broker_addr} MQTT broker, subscribed to {topic} topic' )
+        
         time.sleep(2)
 else:
     print( f"\nCan't connect to {wifi_stations[select_station]['SSID']}" )
+
 
